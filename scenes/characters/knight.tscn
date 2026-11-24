@@ -1,3 +1,18 @@
-[gd_scene format=3 uid="uid://ba6djduhxhg3a"]
+[gd_scene format=3 uid="uid://cloke0v6j3d47"]
+
+[ext_resource type="Texture2D" uid="uid://dvwtp25yhh3pv" path="res://icon.svg" id="1_dp28g"]
+[ext_resource type="Script" uid="uid://u1eo3binpweq" path="res://scenes/characters/knight.gd" id="1_gapps"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x15ge"]
+size = Vector2(32, 32)
 
 [node name="Knight" type="CharacterBody2D" unique_id=1275033015]
+motion_mode = 1
+script = ExtResource("1_gapps")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=60419686]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_dp28g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1054008816]
+shape = SubResource("RectangleShape2D_x15ge")
