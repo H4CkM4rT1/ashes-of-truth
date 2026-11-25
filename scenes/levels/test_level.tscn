@@ -1,8 +1,13 @@
 [gd_scene format=3 uid="uid://dupqedq3v7kvh"]
 
 [ext_resource type="PackedScene" uid="uid://cloke0v6j3d47" path="res://scenes/characters/knight.tscn" id="1_jbqir"]
+[ext_resource type="PackedScene" uid="uid://h1qfhd1n378e" path="res://scenes/enemies/training_dummy.tscn" id="2_yautc"]
 
 [node name="TestLevel" type="Node2D" unique_id=1252625031]
 
 [node name="Knight" parent="." unique_id=1275033015 instance=ExtResource("1_jbqir")]
 position = Vector2(300, 200)
+
+[node name="TrainingDummy" parent="." unique_id=338982115 instance=ExtResource("2_yautc")]
+position = Vector2(540, 210)
+motion_mode = 1

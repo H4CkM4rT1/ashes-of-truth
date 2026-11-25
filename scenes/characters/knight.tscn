@@ -6,7 +6,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x15ge"]
 size = Vector2(32, 32)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k0akp"]
+size = Vector2(70.875, 51)
+
 [node name="Knight" type="CharacterBody2D" unique_id=1275033015]
+collision_layer = 2
+collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_gapps")
 
@@ -16,3 +21,14 @@ texture = ExtResource("1_dp28g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1054008816]
 shape = SubResource("RectangleShape2D_x15ge")
+
+[node name="AttackHitbox" type="Area2D" parent="." unique_id=1322385493]
+collision_layer = 8
+collision_mask = 16
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox" unique_id=991748067]
+position = Vector2(51.4375, 0.5)
+shape = SubResource("RectangleShape2D_k0akp")
+
+[connection signal="area_entered" from="AttackHitbox" to="." method="_on_attack_hitbox_area_entered"]
