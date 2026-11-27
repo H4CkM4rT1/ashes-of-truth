@@ -16,6 +16,10 @@ var attack_timer: float = 0.0
 var attack_cooldown: float = 0.3
 var attack_cooldown_timer: float = 0.0
 @export var attack_damage: int = 10
+@onready var camera: Camera2D = $Camera2D
+@export var shake_strength: float = 4.0
+@export var shake_duration: float = 0.15
+var shake_timer: float = 0.0
 
 
 func _physics_process(delta):
@@ -53,7 +57,15 @@ func _physics_process(delta):
 			is_attacking = false
 			attack_hitbox.monitoring = false
 			attack_cooldown_timer = attack_cooldown
-		
+	
+	if shake_timer > 0:
+		shake_timer -= delta
+		var shake_x: float = randf_range(-shake_strength, shake_strength)
+		var shake_y: float = randf_range(shake_strength, -shake_strength)
+		camera.offset = Vector2(shake_x, shake_y)
+	else:
+		camera.offset = Vector2.ZERO
+
 	move_and_slide()
 
 
@@ -64,4 +76,14 @@ func _on_attack_hitbox_area_entered(area: Area2D) -> void:
 	
 	if enemy.has_method("take_damage"):
 		print("menos vida")
-		enemy.take_damage(attack_damage)
+		enemy.take_damage(attack_damage, global_position)
+		hit_stop()
+		screen_shake()
+
+func hit_stop():
+	Engine.time_scale = 0.1
+	await get_tree().create_timer(0.06, true, false, true).timeout
+	Engine.time_scale = 1.0
+
+func screen_shake():
+	shake_timer = shake_duration
