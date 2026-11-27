@@ -15,6 +15,8 @@ var attack_duration: float = 0.2
 var attack_timer: float = 0.0
 var attack_cooldown: float = 0.3
 var attack_cooldown_timer: float = 0.0
+@export var attack_damage: int = 10
+
 
 func _physics_process(delta):
 	if cooldown_timer > 0:
@@ -56,5 +58,10 @@ func _physics_process(delta):
 
 
 func _on_attack_hitbox_area_entered(area: Area2D) -> void:
+	var enemy = area.get_parent()
 	print("Impacto detectado")
 	print(area.name)
+	
+	if enemy.has_method("take_damage"):
+		print("menos vida")
+		enemy.take_damage(attack_damage)

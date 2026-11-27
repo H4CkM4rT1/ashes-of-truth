@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://h1qfhd1n378e"]
 
+[ext_resource type="Script" uid="uid://drxm30mea6bqp" path="res://scenes/enemies/training_dummy.gd" id="1_4mjir"]
 [ext_resource type="Texture2D" uid="uid://dvwtp25yhh3pv" path="res://icon.svg" id="1_51iuj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b2lgi"]
@@ -12,6 +13,7 @@ size = Vector2(128, 131)
 collision_layer = 4
 collision_mask = 3
 motion_mode = 1
+script = ExtResource("1_4mjir")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1716851902]
 modulate = Color(0.87188035, 0, 0.05984027, 1)
